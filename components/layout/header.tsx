@@ -21,7 +21,7 @@ const HeaderPage = () => {
           <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary text-primary-foreground">
             N
           </div>
-          <span className="hidden sm:inline-block">泥乎系统</span>
+          <span className="hidden sm:inline-block">跨境AI应用</span>
         </div>
 
         {/* Search */}

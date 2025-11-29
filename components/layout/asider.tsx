@@ -1,39 +1,23 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import {
-  Home,
-  LayoutDashboard,
-  Users,
-  Settings,
-  FileText,
-  BarChart3,
-  Package,
-} from "lucide-react";
+import { Home, LayoutDashboard, Users, BarChart3 } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Separator } from "@/components/ui/separator";
 
 const menuItems = [
   {
-    title: "主要功能",
+    title: "商品图",
     items: [
-      { title: "首页", href: "/home", icon: Home },
-      { title: "工作台", href: "/dashboard", icon: LayoutDashboard },
-      { title: "数据统计", href: "/analytics", icon: BarChart3 },
+      { title: "场景参考图", href: "/home", icon: Home },
+      { title: "商品替换", href: "/dashboard", icon: LayoutDashboard },
+      { title: "图片翻译", href: "/analytics", icon: BarChart3 },
     ],
   },
   {
-    title: "管理",
-    items: [
-      { title: "用户管理", href: "/users", icon: Users },
-      { title: "产品管理", href: "/products", icon: Package },
-      { title: "文档管理", href: "/documents", icon: FileText },
-    ],
-  },
-  {
-    title: "系统",
-    items: [{ title: "系统设置", href: "/settings", icon: Settings }],
+    title: "AI视频",
+    items: [{ title: "图转视频", href: "/users", icon: Users }],
   },
 ];
 
