@@ -25,8 +25,8 @@ const HeaderPage = () => {
         </div>
 
         {/* Search */}
-        <div className="flex-1 flex items-center max-w-md">
-          <div className="relative w-full">
+        <div className="flex-1 flex items-center justify-center">
+          <div className="relative w-full max-w-md">
             <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
             <input
               type="search"
