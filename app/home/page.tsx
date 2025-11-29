@@ -8,6 +8,7 @@ import { SearchInput } from "./components/SearchInput";
 import { ProductCategories } from "./components/ProductCategories";
 import { SceneCategories } from "./components/SceneCategories";
 import { UploadDialog, UploadDialogRef } from "./components/UploadDialog";
+import { CutoutDialog } from "./components/CutoutDialog";
 
 const Home = () => {
   const [selectedSort, setSelectedSort] = useState("smart");
@@ -15,6 +16,8 @@ const Home = () => {
   const [selectedScene, setSelectedScene] = useState("全部");
   const [searchText, setSearchText] = useState("");
   const uploadDialogRef = useRef<UploadDialogRef>(null);
+  const [cutoutImage, setCutoutImage] = useState<string | null>(null);
+  const [cutoutOpen, setCutoutOpen] = useState(false);
 
   return (
     <div className="min-h-screen bg-background">
@@ -86,7 +89,24 @@ const Home = () => {
       </div>
 
       {/* 上传商品图弹窗 */}
-      <UploadDialog ref={uploadDialogRef} />
+      <UploadDialog
+        ref={uploadDialogRef}
+        onStartCutout={(image) => {
+          setCutoutImage(image);
+          setCutoutOpen(true);
+        }}
+      />
+      <CutoutDialog
+        key={cutoutImage ?? "cutout-dialog"}
+        open={cutoutOpen && !!cutoutImage}
+        image={cutoutImage}
+        onOpenChange={(isOpen) => {
+          setCutoutOpen(isOpen);
+          if (!isOpen) {
+            setCutoutImage(null);
+          }
+        }}
+      />
     </div>
   );
 };
