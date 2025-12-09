@@ -1,13 +1,24 @@
 import { mockProducts } from "../server";
 import Image from "next/image";
 
-const Products = () => {
+interface ProductsProps {
+  uploadDialogRef: React.RefObject<{
+    open: () => void;
+    close: () => void;
+  } | null>;
+}
+
+const Products = ({ uploadDialogRef }: ProductsProps) => {
+  const handleClick = () => {
+    uploadDialogRef.current?.open?.();
+  };
   return (
     <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
       {mockProducts.map((product) => (
         <div
           key={product.id}
           className="group relative overflow-hidden rounded-lg border bg-card hover:shadow-lg transition-all cursor-pointer"
+          onClick={handleClick}
         >
           <div className="aspect-square relative overflow-hidden bg-muted">
             <Image

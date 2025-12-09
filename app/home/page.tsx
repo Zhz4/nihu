@@ -1,10 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { SortOptions } from "./components/SortOptions";
 import { SearchInput } from "./components/SearchInput";
 import Categories from "./components/Categories";
 import Products from "./components/Products";
+import UploadDialog from "./components/UploadDialog";
 
 const Home = () => {
   const [selectedSort, setSelectedSort] = useState("smart");
@@ -38,10 +39,10 @@ const Home = () => {
     "简单背景",
     "工作场所",
   ];
+  const uploadDialogRef = useRef<{ open: () => void; close: () => void }>(null);
   return (
     <div className="min-h-screen bg-background">
       <div className="container mx-auto px-4 py-6">
-        {/* 场景参考图 标题 */}
         <h1 className="text-2xl font-bold mb-6">场景参考图</h1>
 
         <div className="flex items-center gap-4 mb-6 flex-wrap">
@@ -66,7 +67,9 @@ const Home = () => {
           label="场景"
         />
 
-        <Products />
+        <Products uploadDialogRef={uploadDialogRef} />
+
+        <UploadDialog ref={uploadDialogRef} />
       </div>
     </div>
   );
